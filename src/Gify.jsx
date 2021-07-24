@@ -17,14 +17,20 @@ function Gify() {
   return gif &&
 
     <Container maxWidth="xs" >
-
       <Grid
         container
+        spacing={2}
         direction="column"
         justifyContent="center"
         alignItems="center"
         xs={12}
-      > <Gif gif={gif} width={200} />
+      >
+        <Grid
+          item
+          xs={12}
+        >
+          <Gif gif={gif} width={200} />
+        </Grid>
       </Grid>
     </Container>
 }
