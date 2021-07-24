@@ -1,11 +1,13 @@
-import React from 'react';
-import './App.css';
-import Calculator from 'Calculator';
+import React from "react";
+import "./App.css";
+import Calculator from "Calculator";
+import Gify from "Gify";
 
 function App() {
   return (
     <div className="App">
-      <Calculator/>
+      <Calculator />
+      <Gify />
     </div>
   );
 }

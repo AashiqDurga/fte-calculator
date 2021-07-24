@@ -73,7 +73,7 @@ export default function Calculator() {
                         {answer.fte} FTE
                     </Typography>
                     <Typography color={'textPrimary'} variant="h3" component="h2">
-                        {answer.remainder} Remainder
+                        {answer.remainder}
                     </Typography>
                 </Grid>
             </Grid>
