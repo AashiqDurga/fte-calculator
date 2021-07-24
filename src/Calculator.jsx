@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { Button, makeStyles, TextField, Typography } from '@material-ui/core'
 import { Calculate } from 'CalculatorService';
+import logo from './assets/logo.png'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,9 +36,7 @@ export default function Calculator() {
                     alignItems="center"
                     xs={12}
                 >
-                    <Typography color={'textPrimary'} variant="h3" component="h2">
-                        FTE Calculator
-                    </Typography>
+                    <img src={logo} alt ="logo" width={200} height={300} />
                 </Grid>
                 <Grid
                     container
@@ -69,12 +68,15 @@ export default function Calculator() {
                     alignItems="center"
                     xs={12}
                 >
-                    <Typography color={'textPrimary'} variant="h3" component="h2">
-                        {answer.fte} FTE
-                    </Typography>
-                    <Typography color={'textPrimary'} variant="h3" component="h2">
+                    {answer.fte &&
+                        <Typography color={'textPrimary'} variant="h3" component="h2">
+                            {answer.fte} FTE
+                        </Typography>
+                    }
+                    {answer.remainder && <Typography color={'textPrimary'} variant="h3" component="h2">
                         {answer.remainder}
                     </Typography>
+                    }
                 </Grid>
             </Grid>
         </Container>

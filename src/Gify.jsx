@@ -24,7 +24,7 @@ function Gify() {
         justifyContent="center"
         alignItems="center"
         xs={12}
-      > <Gif gif={gif} width={200} />;
+      > <Gif gif={gif} width={200} />
       </Grid>
     </Container>
 }
