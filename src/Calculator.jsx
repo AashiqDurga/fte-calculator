@@ -4,6 +4,11 @@ import Grid from '@material-ui/core/Grid'
 import { Button, makeStyles, TextField, Typography } from '@material-ui/core'
 import { Calculate } from 'CalculatorService';
 import logo from './assets/logo.png'
+import { GiphyFetch } from "@giphy/js-fetch-api";
+import {
+    Gif
+} from "@giphy/react-components";
+import { useAsync } from "react-async-hook";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,14 +16,24 @@ const useStyles = makeStyles((theme) => ({
 
     },
 }));
+
+const giphyFetch = new GiphyFetch("sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh");
+
 export default function Calculator() {
     const classes = useStyles();
     const [hours, setHours] = useState("");
     const [answer, setAnswer] = useState({ fte: "", remainder: "" });
 
-    const handleCalculation = () => {
+    const [gif, setGif] = useState(null);
+    useAsync(async () => {
+        const { data } = await giphyFetch.random({ tag: 'Miss you' });
+        setGif(data);
+    }, [])
+    const handleCalculation = async () => {
         const result = Calculate(hours)
         setAnswer({ fte: result.fte, remainder: result.remainder })
+        const { data } = await giphyFetch.random({ tag: 'Miss you' });
+        setGif(data);
     }
 
     return (
@@ -70,6 +85,21 @@ export default function Calculator() {
                         {answer.remainder}
                     </Typography>
                     }
+                </Grid>
+            </Grid>
+            <Grid
+                container
+                spacing={2}
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                xs={12}
+            >
+                <Grid
+                    item
+                    xs={12}
+                >
+                    {gif && <Gif gif={gif} width={200} />}
                 </Grid>
             </Grid>
         </Container>
