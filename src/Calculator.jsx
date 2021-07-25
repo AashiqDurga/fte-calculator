@@ -25,6 +25,7 @@ export default function Calculator() {
     const [answer, setAnswer] = useState({ fte: "", remainder: "" });
 
     const [gif, setGif] = useState(null);
+    
     useAsync(async () => {
         const { data } = await giphyFetch.random({ tag: 'Miss you' });
         setGif(data);
