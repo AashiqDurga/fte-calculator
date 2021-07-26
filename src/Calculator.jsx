@@ -101,51 +101,31 @@ export default function Calculator() {
                             <Tab label="Table" {...a11yProps(1)} />
                         </Tabs>
                     </AppBar>
-                </Grid>
-                <Grid
-                    item
-                    xs={12}
-                >
                     <TabPanel value={value} index={0}>
+                        <TextField id="outlined-basic" label="Enter Hours" type="number" fullWidth
+                            InputLabelProps={{
+                                shrink: true,
+                            }} variant="outlined" onChange={(e) => setHours(e.target.value)} />
                         <Grid
                             item
                             xs={12}
                         >
-                            <TextField id="outlined-basic" label="Enter Hours" type="number"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }} variant="outlined" onChange={(e) => setHours(e.target.value)} />
-                        </Grid>
-                        <Grid
-                            item
-                            xs={12}
-                        >
-                            <Button variant="contained" color="primary" onClick={() => handleCalculation()}>
+                            <Button variant="contained" color="primary" fullWidth onClick={() => handleCalculation()}>
                                 Calculate that shit
                             </Button>
                         </Grid>
-                        <Grid
-                            item
-                            xs={12}
-                        >
-                            {answer.fte &&
-                                <Typography color={'textPrimary'} variant="h4" component="h2">
-                                    {answer.fte} FTE
-                                </Typography>
-                            }
-                            {answer.remainder && <Typography color={'textPrimary'} variant="h4" component="h2">
-                                {answer.remainder}
+                        {answer.fte &&
+                            <Typography color={'textPrimary'} variant="h4" component="h2">
+                                {answer.fte} FTE
                             </Typography>
-                            }
-                        </Grid>
+                        }
+                        {answer.remainder && <Typography color={'textPrimary'} variant="h4" component="h2">
+                            {answer.remainder}
+                        </Typography>
+                        }
                     </TabPanel>
-                </Grid>
-                <Grid
-                    item
-                    xs={12}
-                >
                     <TabPanel value={value} index={1}>
-                        <BasicTable/>
+                        <BasicTable />
                     </TabPanel>
                 </Grid>
             </Grid>
